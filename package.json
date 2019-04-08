@@ -1,0 +1,30 @@
+{
+  "name": "GoalsZetten",
+  "version": "1.0.0",
+  "description": "This is an application build by vue.js Express and mongodb. This project is build of the video tutorial by Traversy Media: link https://www.youtube.com/watch?v=j55fHUJqtyw. It is a free video on youtube.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "nodemon server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LaupWing/VueProject-GoalsProject.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LaupWing/VueProject-GoalsProject/issues"
+  },
+  "homepage": "https://github.com/LaupWing/VueProject-GoalsProject#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "mongodb": "^3.2.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  }
+}
