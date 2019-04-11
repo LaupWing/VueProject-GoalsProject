@@ -1,10 +1,14 @@
 <template>
     <div id="add">
+        <!-- Als Goal collection benaming nog niet is gedefineerd  
+        ####################### createdGoalsCollection = false-->
         <div v-if="!createdGoalsCollection">
             Add Collection of Goals
             <input type="text" v-model="newGoalCollection">
             <button @click="createdNewGoals">Create Goals Collection</button>
         </div>
+        <!-- Als Goal collection benaming nog gedefineerd is  
+        ####################### createdGoalsCollection = true-->
         <div v-if="createdGoalsCollection">
             Collection: {{newGoalCollection}}
             <div 
@@ -13,11 +17,13 @@
             >
                 <h2>{{goal.goalName}}</h2>
             </div>
+            <!-- Als addingGoalname is true oftwel voeg goalName toe -->
             <div v-if="addingGoalName">
                 Add Goal
                 <input type="text" v-model="goalName">
                 <button @click="createdGoalName">Add Goal</button>
             </div>
+            <!--Note dit is addedGoalname (goalname is toegevoegd) -->
             <div v-if="addedGoalName">
                 <h2>Goal: {{goalName}}</h2>
                 <p
@@ -103,7 +109,7 @@ export default {
             this.addingGoalName         =   true
         },
         async postGoal(){
-            await GoalService.insertGoal(this.newGoalCollection, this.goalsArray)
+            await GoalService.insertGoal(this.newGoalCollection, this.goalsArrayc)
         } 
   },
   async created(){
