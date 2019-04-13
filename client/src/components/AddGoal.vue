@@ -2,10 +2,12 @@
     <div id="add">
         <!-- Als Goal collection benaming nog niet is gedefineerd  
         ####################### createdGoalsCollection = false-->
-        <div v-if="!createdGoalsCollection">
+        <div class="addCollection centering" v-if="!createdGoalsCollection">
             Add Collection of Goals
-            <input type="text" v-model="newGoalCollection">
-            <button @click="createdNewGoals">Create Goals Collection</button>
+            <form>
+                <input type="text" v-model="newGoalCollection">
+                <button @click="createdNewGoals">Create</button>
+            </form>
         </div>
         <!-- Als Goal collection benaming nog gedefineerd is  
         ####################### createdGoalsCollection = true-->
@@ -141,7 +143,15 @@ a {
 #add{
     width: 80vw;
     max-width: 500px;
-    margin: auto;
-    background: orange;
+    background: rgba(255,255,255,.5);
+    margin: auto;    
 }
+.addCollection{
+    font-family: 'Montserrat', sans-serif;
+    padding: 20px;
+}
+.addCollection form{
+    display: flex;
+}
+
 </style>
