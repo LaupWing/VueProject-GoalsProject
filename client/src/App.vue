@@ -28,7 +28,12 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  background: url("https://source.unsplash.com/1600x900/?achievement");
+  background: 
+    linear-gradient(
+      rgba(0, 0, 0, 0.2), 
+      rgba(0, 0, 0, 0.2)
+    ),
+    url("https://source.unsplash.com/1600x900/?achievement");
   background-size:cover;
   width: 100vw;
   height: 100vh;
