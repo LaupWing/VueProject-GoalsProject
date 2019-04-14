@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
     <add-goal msg="Welcome to Your Vue.js App"/>
   </div>
 </template>
@@ -48,7 +47,12 @@ button{
     font-family: 'Montserrat', sans-serif; 
     background: transparent;
     padding:5px 10px;
-    border: black solid 2px;
-    color: black;
+    border: white solid 2px;
+    color: white;
+    white-space: nowrap;
+}
+input[type="text"]{
+    border: white solid 2px;
+    border-right: none;
 }
 </style>

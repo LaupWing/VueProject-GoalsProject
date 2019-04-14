@@ -3,7 +3,9 @@
         <!-- Als Goal collection benaming nog niet is gedefineerd  
         ####################### createdGoalsCollection = false-->
         <div class="addCollection centering" v-if="!createdGoalsCollection">
-            Add Collection of Goals
+            <h2>
+                Add Collection of Goals
+            </h2>
             <form>
                 <input type="text" v-model="newGoalCollection">
                 <button @click="createdNewGoals">Create</button>
@@ -11,8 +13,10 @@
         </div>
         <!-- Als Goal collection benaming nog gedefineerd is  
         ####################### createdGoalsCollection = true-->
-        <div v-if="createdGoalsCollection">
-            Collection: {{newGoalCollection}}
+        <div class="addGoal" v-if="createdGoalsCollection">
+            <h2 class="goalCollection">
+                Collection: <span>{{newGoalCollection}}</span>
+            </h2>  
             <div 
                 v-for="(goal, index) in goalsArray"
                 v-bind:key="index+'A'"
@@ -20,10 +24,11 @@
                 <h2>{{goal.goalName}}</h2>
             </div>
             <!-- Als addingGoalname is true oftwel voeg goalName toe -->
-            <div v-if="addingGoalName">
-                Add Goal
-                <input type="text" v-model="goalName">
-                <button @click="createdGoalName">Add Goal</button>
+            <div class="centering" v-if="addingGoalName">
+                <form action="">
+                    <input type="text" v-model="goalName">
+                    <button @click="createdGoalName">Add Goal</button>
+                </form>
             </div>
             <!--Note dit is addedGoalname (goalname is toegevoegd) -->
             <div v-if="addedGoalName">
@@ -126,6 +131,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+h2{
+    font-weight: 400;
+}
 h3 {
   margin: 40px 0 0;
 }
@@ -140,18 +148,56 @@ li {
 a {
   color: #42b983;
 }
+form{
+    display: flex;
+    width: 100%;
+}
+form input[type="text"]{
+    outline: none;
+    width: 100%;
+}
 #add{
     width: 80vw;
-    max-width: 500px;
-    background: rgba(255,255,255,.5);
+    max-width: 420px;
+    /* background: rgba(255,255,255,.5); */
     margin: auto;    
 }
-.addCollection{
-    font-family: 'Montserrat', sans-serif;
+
+.addCollection,
+.addGoal{
     padding: 20px;
 }
-.addCollection form{
+
+.addCollection{
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+}
+.addCollection h2{
+    margin: 10px;
+}
+.addCollection form input{
+    width: 100%;
+    outline: none;
+}
+.addGoal{
     display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.goalCollection{
+    text-align: left;
+    margin-right: auto;
+    font-size: 20px;
+    color: white;
+    display: inline-block;
+    background: orange;
+    padding: 7px 10px 4px 10px;
+}
+.goalCollection span{
+    color: black;
+}
+.addGoal div{
+    width: 100%;
 }
 
 </style>
