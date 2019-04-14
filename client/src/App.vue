@@ -22,7 +22,7 @@ export default {
     box-sizing: border-box;
 }
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: 'Montserrat', sans-serif; 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -50,9 +50,18 @@ button{
     border: white solid 2px;
     color: white;
     white-space: nowrap;
+    transition: .25s;
+    cursor: pointer;
+    outline: none;
+}
+button:hover{
+    color: black;
+    background: white;
 }
 input[type="text"]{
     border: white solid 2px;
     border-right: none;
+    font-family: 'Montserrat', sans-serif; 
+    padding: 5px;
 }
 </style>

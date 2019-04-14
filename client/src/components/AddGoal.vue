@@ -20,8 +20,10 @@
             <div 
                 v-for="(goal, index) in goalsArray"
                 v-bind:key="index+'A'"
+                class="goalResult"
             >
-                <h2>{{goal.goalName}}</h2>
+                <h3><span>Goal Name: </span>{{goal.goalName}}</h3>
+                <p><span>Total Tasks: </span>{{goal.tasks.length}}</p>
             </div>
             <!-- Als addingGoalname is true oftwel voeg goalName toe -->
             <div class="centering" v-if="addingGoalName">
@@ -31,24 +33,29 @@
                 </form>
             </div>
             <!--Note dit is addedGoalname (goalname is toegevoegd) -->
-            <div v-if="addedGoalName">
-                <h2>Goal: {{goalName}}</h2>
+            <div class="tasks" v-if="addedGoalName">
+                <h3><span>Goal:</span>{{goalName}}</h3>
                 <p
                     v-for="(task, index) in tasksArray"
                     v-bind:key="index"
+                    class="task"
                 >
-                    Task: {{task}}
+                    <span>{{index+1}}:</span>{{task}}
                 </p>
-                <input type="text" v-model="taskName">
                 <div v-if="!addedGoal">
-                    <button @click="addingTask">Add subtask</button>
-                    <button @click="addingGoal">Done</button>
+                    <div class="addTask">
+                        <input type="text" v-model="taskName">
+                        <button @click="addingTask">Add Task</button>
+                    </div>
+                    <button class="confirm" @click="addingGoal">Done</button>
                 </div>
             </div>
-            <div v-if="addedGoal">
-                <p>You want to add another goal?</p>
-                <button @click="anotherGoal(true)">Add Another Goal</button>
-                <button @click="anotherGoal(false)">Nope</button>
+            <div class="confirmation" v-if="addedGoal">
+                <div class="addAnotherGoal">
+                    <p>You want to add another goal?</p>
+                    <button @click="anotherGoal(true)">Add Another Goal</button>
+                    <button @click="anotherGoal(false)">Nope</button>
+                </div>
             </div>
         </div>
         <!-- <button @click='postGoal'>POST IT</button> -->
@@ -131,28 +138,25 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h2{
+h2,h3{
     font-weight: 400;
 }
-h3 {
-  margin: 40px 0 0;
-}
 ul {
-  list-style-type: none;
-  padding: 0;
+    list-style-type: none;
+    padding: 0;
 }
 li {
-  display: inline-block;
-  margin: 0 10px;
+    display: inline-block;
+    margin: 0 10px;
 }
 a {
-  color: #42b983;
+    color: #42b983;
 }
 form{
     display: flex;
     width: 100%;
 }
-form input[type="text"]{
+input[type="text"]{
     outline: none;
     width: 100%;
 }
@@ -190,7 +194,8 @@ form input[type="text"]{
     font-size: 20px;
     color: white;
     display: inline-block;
-    background: orange;
+    background: rgba(251, 215, 56, .7);
+    border-radius: 10px 10px 0 0;
     padding: 7px 10px 4px 10px;
 }
 .goalCollection span{
@@ -199,5 +204,73 @@ form input[type="text"]{
 .addGoal div{
     width: 100%;
 }
+.tasks{
+    border: 5px solid rgba(251, 215, 56, .7);
+}
+.tasks h3{
+    text-align: left;
+    padding: 5px;
+    background: lightgrey;
+}
+.tasks h3 span{
+    font-weight: 600;
+    margin-right: 5px;
+}
+.tasks button.confirm{
+    width: 100%;
+    border: none;
+    background: rgba(251, 215, 56, .7);
+    font-weight: 600;
+    cursor: pointer;
+}
+.tasks button.confirm:hover{
+    background: rgba(251, 215, 56, 1);
+}
+.task{
+    background: white;
+    padding: 5px;
+    border-bottom: 2px rgba(0,0,0,.5) solid;
+    text-align: left;
+}
+.task span{
+    padding: 5px;
+    font-weight: 600;
+    display: inline-block;
+}
+.addTask{
+    display: flex;
+    width: 100%;
+    padding: 5px;
+}
 
+.confirmation{
+    border: 5px solid rgba(251, 215, 56, .7);
+}
+.goalResult{
+    background: rgba(251, 215, 56, .7);
+    padding: 5px;
+    border-bottom: rgba(0,0,0,.5) 1px solid;
+}
+.goalResult h3,
+.goalResult p{
+    text-align: left;
+    color: black;
+    font-weight: 600;
+    font-size: 18px;
+}
+.goalResult h3 span,
+.goalResult p span{
+    color: white;
+    width: 35%;
+    display: inline-block;
+}
+
+.addAnotherGoal{
+    color: white;
+    padding: 10px;
+    background: rgba(0,0,0,.3);
+}
+.addAnotherGoal button{
+    margin: 5px;
+}
 </style>
