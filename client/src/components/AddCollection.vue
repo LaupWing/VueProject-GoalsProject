@@ -63,12 +63,12 @@
 </template>
 
 <script>
-import GoalService from '../GoalsService'
+import CRUDService from '../CRUDService'
 export default {
   name: 'HelloWorld',
   data(){
       return{
-          goals                     :   [],
+          collections               :   [],
           createdGoalsCollection    :   false,
           addedGoalName             :   false,
           addingGoalName            :   false,
@@ -109,6 +109,7 @@ export default {
             this.addedGoal      =   false
             if(!add){
                 this.createdGoalsCollection = false
+                this.postCollection()
                 return
             }
             this.addingGoalName =   true
@@ -122,13 +123,14 @@ export default {
             this.createdGoalsCollection =   true
             this.addingGoalName         =   true
         },
-        async postGoal(){
-            await GoalService.insertGoal(this.newGoalCollection, this.goalsArrayc)
+        async postCollection(){
+            await CRUDService.insertGoal(this.newGoalCollection, this.goalsArray)
         } 
   },
   async created(){
     try{
-        this.goals = await GoalService.getGoals()
+        this.collections = await CRUDService.getGoals()
+        console.log(this.collections[0].goals[0].tasks)
     }catch(err){
         this.error = err.message;
     }

@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <add-goal msg="Welcome to Your Vue.js App"/>
+    <add-collection msg="Welcome to Your Vue.js App"/>
   </div>
 </template>
 
 <script>
-import AddGoal from './components/AddGoal.vue'
+import AddCollection from './components/AddCollection.vue'
 
 export default {
   name: 'app',
   components: {
-    AddGoal
+    AddCollection
   }
 }
 </script>

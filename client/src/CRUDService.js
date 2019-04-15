@@ -3,7 +3,7 @@ import axios from 'axios'
 
 const url = 'http://localhost:5000/api/goals/';
 
-class GoalService{
+class CRUDService{
     // Get Posts
     static getGoals(){
         return new Promise(async (resolve, reject)=>{
@@ -23,11 +23,11 @@ class GoalService{
     }
 
     // Create Post
-    static insertGoal(goal, tasks){
-        console.log(goal, tasks)
+    static insertGoal(collection, goals){
+        console.log(collection, goals)
         return axios.post(url,{
-            goal,
-            tasks
+            collection,
+            goals
         })
     }
 
@@ -37,4 +37,4 @@ class GoalService{
     }
 }
 
-export default GoalService
+export default CRUDService
